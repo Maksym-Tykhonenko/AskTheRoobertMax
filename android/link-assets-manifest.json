@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "theAskSrcRoobert/theAskAssetsRoobert/askTheRoobertFonts/K2D-Bold.ttf",
+      "sha1": "a1c0d2ca862a2e6e95725c5b693da7b4f13c14ae"
+    },
+    {
+      "path": "theAskSrcRoobert/theAskAssetsRoobert/askTheRoobertFonts/K2D-ExtraLight.ttf",
+      "sha1": "cf4a7cef69a77cd4122c68f6f7975ced631af588"
+    },
+    {
+      "path": "theAskSrcRoobert/theAskAssetsRoobert/askTheRoobertFonts/K2D-Medium.ttf",
+      "sha1": "fb3f0367528e94dde5f96fde52280fa70aa352f4"
+    },
+    {
+      "path": "theAskSrcRoobert/theAskAssetsRoobert/askTheRoobertFonts/K2D-Regular.ttf",
+      "sha1": "0b9dc056d96e700bf4405e1e1e5f6b6a14d56d8e"
+    },
+    {
+      "path": "theAskSrcRoobert/theAskAssetsRoobert/askTheRoobertFonts/K2D-SemiBold.ttf",
+      "sha1": "dc5eddeb063a9ac043ba101ae8b0afe9a75a814e"
+    },
+    {
+      "path": "theAskSrcRoobert/theAskAssetsRoobert/askTheRoobertFonts/Montserrat-Regular.ttf",
+      "sha1": "1c8119b38eef1914a4fbd9f6cfdedf198445ab97"
+    },
+    {
+      "path": "theAskSrcRoobert/theAskAssetsRoobert/askTheRoobertFonts/Montserrat-SemiBold.ttf",
+      "sha1": "d491c9d0af61faef59ca807737b560170f547f5b"
+    },
+    {
+      "path": "theAskSrcRoobert/theAskAssetsRoobert/askTheRoobertFonts/SFProText-Semibold.ttf",
+      "sha1": "9560ae412d73c7c9af72333db50464b4e597b0f9"
+    }
+  ]
+}
