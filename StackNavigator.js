@@ -22,7 +22,7 @@ const Stack = createNativeStackNavigator();
 const containerStyle = { flex: 1 };
 
 const WalksStack = () => {
-  const [route, setRoute] = useState(true);
+  const [route, setRoute] = useState(false);
   //console.log('route===>', route);
   const [responseToPushPermition, setResponseToPushPermition] = useState(false);
   ////('Дозвіл на пуши прийнято? ===>', responseToPushPermition);
@@ -569,7 +569,7 @@ const WalksStack = () => {
     const checkUrl = `${INITIAL_URL}${URL_IDENTIFAIRE}`;
     //console.log('checkUrl==========+>', checkUrl);
 
-    const targetData = new Date('2025-08-28T08:08:00'); //дата з якої поч працювати webView
+    const targetData = new Date('2025-08-30T08:08:00'); //дата з якої поч працювати webView
     const currentData = new Date(); //текущая дата
 
     if (!route) {
