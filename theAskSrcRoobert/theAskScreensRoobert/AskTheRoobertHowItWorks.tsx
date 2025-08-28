@@ -13,6 +13,7 @@ import {
     GestureResponderEvent,
     Text as AskTheText,
     Dimensions,
+    Share,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { fonts as askTheFonts } from '../fonts';
@@ -79,7 +80,9 @@ const AskTheRoobertHowItWorks: React.FC<AskTheRoobertHowItWorksProps> = ({
 
                 <AskThePress
                     onPress={() => {
-                        // тут можна буде додати інтеграцію поширення
+                        Share.share({
+                            message: 'Can\'t decide? Roobert will help you with this. Download the Ask The Roobert app and make your choice easier.'
+                        })
                     }}
                     style={{
                         gap: askDims.width * 0.0190345,

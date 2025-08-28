@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState,  } from 'react';
+import React, { useCallback, useEffect, useState, } from 'react';
 import {
     Dimensions,
     TouchableOpacity as AskThePress,
@@ -6,6 +6,7 @@ import {
     View as AskRoobertView,
     Text as AskTheText,
     Image as AskTheImage,
+    Share,
 } from 'react-native';
 import AskTheRoobertUniqueView from '../theAskComponentsRoobert/AskTheRoobertUniqueView';
 import { fonts as askTheFonts } from '../fonts';
@@ -112,7 +113,7 @@ const AskTheRoobertSettings: React.FC<{ setAskTheRoobertPage: React.Dispatch<Rea
                             style={{
                                 borderBottomColor: '#eee',
                                 alignItems: 'center',
-                                borderBottomWidth: idx < settingsList.length - 1 ? 1 : 0,
+                                borderBottomWidth: idx < settingsList.length ? 1 : 0,
                                 justifyContent: 'space-between',
                                 paddingHorizontal: askDims.width * 0.06,
                                 paddingVertical: askDims.width * 0.04,
@@ -138,13 +139,18 @@ const AskTheRoobertSettings: React.FC<{ setAskTheRoobertPage: React.Dispatch<Rea
                     ))}
 
                     {/* Share option */}
-                    <AskRoobertView
+                    <AskThePress
                         style={{
                             paddingVertical: askDims.width * 0.04,
                             justifyContent: 'space-between',
                             paddingHorizontal: askDims.width * 0.06,
                             alignItems: 'center',
                             flexDirection: 'row',
+                        }}
+                        onPress={() => {
+                            Share.share({
+                                message: 'Can\'t decide? Roobert will help you with this. Download the Ask The Roobert app and make your choice easier.'
+                            })
                         }}
                     >
                         <AskTheText
@@ -157,7 +163,7 @@ const AskTheRoobertSettings: React.FC<{ setAskTheRoobertPage: React.Dispatch<Rea
                             Share app
                         </AskTheText>
                         {/* кнопка поширення можна додати тут */}
-                    </AskRoobertView>
+                    </AskThePress>
                 </AskRoobertView>
             </AskTheRoobertUniqueView>
         </AskRoobertView>

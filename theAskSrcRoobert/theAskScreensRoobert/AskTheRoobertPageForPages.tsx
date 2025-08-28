@@ -37,9 +37,10 @@ import AskTheRoobertRadialYellowGradientProps from '../theAskComponentsRoobert/A
 
 interface AskTheRoobertPageForPagesProps {
     setAskTheRoobertPage: (page: string) => void;
+    onCreateDecide?: () => void;
 }
 
-const AskTheRoobertPageForPages: React.FC<AskTheRoobertPageForPagesProps> = ({ setAskTheRoobertPage }) => {
+const AskTheRoobertPageForPages: React.FC<AskTheRoobertPageForPagesProps> = ({ setAskTheRoobertPage, onCreateDecide }) => {
     const askDims = AskRoobertDims.get('window');
 
     return (
@@ -125,7 +126,12 @@ const AskTheRoobertPageForPages: React.FC<AskTheRoobertPageForPagesProps> = ({ s
                     {askTheRoobertPagesKnops.map((knop, index) => (
                         <AskRoobertBtn
                             key={index}
-                            onPress={() => setAskTheRoobertPage(knop.askTheRoobertPage)}
+                            onPress={() => {
+                                if (knop.askTheRoobertPage === 'Create the decide') {
+                                    if (onCreateDecide) onCreateDecide();
+                                }
+                                setAskTheRoobertPage(knop.askTheRoobertPage);
+                            }}
                             style={{
                                 gap: askDims.width * 0.0190345,
                                 marginVertical: askDims.width * 0.0160345,

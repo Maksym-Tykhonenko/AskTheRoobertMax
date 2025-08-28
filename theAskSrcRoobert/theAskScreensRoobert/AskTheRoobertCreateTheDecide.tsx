@@ -45,21 +45,38 @@ const AskTheRoobertCreateTheDecide: React.FC<AskTheRoobertCreateTheDecideProps> 
     const [optionMode, setOptionMode] = useState(4);
     const [presetTitle, setPresetTitle] = useState('');
 
-    // Apply preset if present and randomizer is opened
+    // Track if preset has been applied
+    const [isPresetApplied, setIsPresetApplied] = useState(false);
+
+    // Apply preset only once when it changes (not on every randomizer open)
     React.useEffect(() => {
-        if (preset && isOpenedRandomizer) {
+        if (preset && !isPresetApplied) {
             setPresetTitle(preset.title);
             setOptionMode(preset.optionMode);
             setOptions(preset.options.concat(Array(4 - preset.options.length).fill('')));
             setOptionColors(preset.colors.concat(optionColors.slice(preset.colors.length)));
+            setIsPresetApplied(true);
         }
-    }, [preset, isOpenedRandomizer]);
+        // Reset flag if preset changes
+        if (!preset) {
+            setIsPresetApplied(false);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [preset]);
 
-    // Handle option text change
+    // When user changes any field, "detach" from preset (always use local state)
     const handleOptionChange = (idx: number, text: string) => {
         const newOptions = [...options];
         newOptions[idx] = text;
         setOptions(newOptions);
+    };
+    const handleTitleChange = (text: string) => {
+        setPresetTitle(text);
+    };
+    const handleOptionModeChange = (value: number) => {
+        setOptionMode(value);
+        setOptions(options.slice(0, value).concat(Array(4 - value).fill('')));
+        setOptionColors(optionColors.slice(0, value).concat(['#FF2F33', '#3DC000', '#26A4FF', '#FF6DEB'].slice(value)));
     };
 
     const allFilled = presetTitle.trim() !== '' && options.slice(0, optionMode).every(opt => opt.trim() !== '');
@@ -92,7 +109,7 @@ const AskTheRoobertCreateTheDecide: React.FC<AskTheRoobertCreateTheDecideProps> 
         const now = new Date();
         const dateStr = `${String(now.getDate()).padStart(2, '0')}.${String(now.getMonth() + 1).padStart(2, '0')}.${now.getFullYear()}`;
 
-        // Save to AsyncStorage
+        // Save to AsyncStorage using current form state
         const archiveObj = {
             header: presetTitle,
             label: optionMode === 2 ? '2 options' : '4 options',
@@ -214,8 +231,9 @@ const AskTheRoobertCreateTheDecide: React.FC<AskTheRoobertCreateTheDecideProps> 
                                 Preset title
                             </RoobertText>
                             <RoobertInput
-                                onChangeText={setPresetTitle}
+                                onChangeText={handleTitleChange}
                                 value={presetTitle}
+                                maxLength={23}
                                 placeholderTextColor="#8D86DA"
                                 placeholder="Type here"
                                 style={{
@@ -260,7 +278,7 @@ const AskTheRoobertCreateTheDecide: React.FC<AskTheRoobertCreateTheDecideProps> 
                                     return (
                                         <RoobertPress
                                             key={value}
-                                            onPress={() => setOptionMode(value)}
+                                            onPress={() => handleOptionModeChange(value)}
                                             style={{
                                                 marginRight: idx === 0 ? askDims.width * 0.03 : 0,
                                                 justifyContent: 'center',
@@ -334,6 +352,7 @@ const AskTheRoobertCreateTheDecide: React.FC<AskTheRoobertCreateTheDecideProps> 
                                         </RoobertText>
                                     </RoobertView>
                                     <RoobertInput
+                                        maxLength={14}
                                         value={options[idx]}
                                         onChangeText={text => handleOptionChange(idx, text)}
                                         placeholder="Your option"

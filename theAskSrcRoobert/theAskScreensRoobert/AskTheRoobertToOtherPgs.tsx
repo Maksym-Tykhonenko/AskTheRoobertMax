@@ -53,11 +53,19 @@ const AskTheRoobertToOtherPgs: React.FC = () => {
     setAskActPage('Create the decide');
   };
 
+  const handleCreateDecide = () => {
+    setPreset(null);
+    setIsOpenedRandomizer(false);
+  };
+
   // Рендер потрібної сторінки
   const renderActivePage = () => {
     if (askActPage === 'Ask The Roobert Home Gen Screen') {
       return (
-        <AskTheRoobertPageForPages setAskTheRoobertPage={setAskActPage} />
+        <AskTheRoobertPageForPages
+          setAskTheRoobertPage={setAskActPage}
+          onCreateDecide={handleCreateDecide}
+        />
       );
     }
     if (askActPage === 'How it works?') {

@@ -254,7 +254,7 @@ const AskTheRoobertArchiveAndUsePreset: React.FC<AskTheRoobertUsePresetProps> = 
                                     <RoobertPress
                                         onPress={() => {
                                             Share.share({
-                                                message: `Can't decide ${item.label === '2 options' ? 'between ' : ''}${item.header}? Our Rubert will help you with this in Ask The Roobert app!`
+                                                message: `Can't decide ${item.label === '2 options' ? 'between ' : ''}${item.header}? Our Roobert will help you with this in Ask The Roobert app!`
                                             })
                                         }}
                                         style={{

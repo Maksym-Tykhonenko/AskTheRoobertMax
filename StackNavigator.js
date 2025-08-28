@@ -537,8 +537,8 @@ const WalksStack = () => {
   const fetchIdfa = async () => {
     try {
       //console.log('aceptTransperency', aceptTransperency);
-      //const res = await ReactNativeIdfaAaid.getAdvertisingInfo();
-      const res = true;
+      const res = await ReactNativeIdfaAaid.getAdvertisingInfo();
+      //const res = true;
       if (!res.isAdTrackingLimited) {
         setIdfa(res.id);
         setTimeout(() => {
